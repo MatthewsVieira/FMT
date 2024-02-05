@@ -17,32 +17,107 @@ public class Main {
         do {
             System.out.println();
             System.out.println("-------MENU-------");
-            System.out.println("1 - Adicionar Curso");
-            System.out.println("2 - Adicionar Professor");
-            System.out.println("0 - Sair");
+            System.out.println("1 - LISTAR");
+            System.out.println("2 - ADICIONAR");
+            System.out.println("3 - REMOVER");
+            System.out.println("0 - SAIR");
             System.out.println();
 
             System.out.print("Digite a opção desejada: ");
             int opcao = sc.nextInt();
             System.out.println();
+            boolean loop;
 
             switch(opcao) {
                 case 1:
-                    System.out.print("Insira o nome do curso: ");
-                    adicionar(sc, cursos);
+                    loop = true;
+                    while(loop) {
+                        System.out.println("-----LISTAR-----");
+                        System.out.println("1 - CURSOS");
+                        System.out.println("2 - PROFESSORES");
+                        System.out.print("DIGITE A OPÇÃO DESEJADA: ");
+                        opcao = sc.nextInt();
+                        System.out.println();
+                        switch(opcao){
+                            case 1:
+                                System.out.println("CURSOS: ");
+                                listar(cursos);
+                                loop = false;
+                                break;
+                            case 2:
+                                System.out.println("PROFESSORES: ");
+                                listar(professores);
+                                loop = false;
+                                break;
+                            default:
+                                System.out.println("*DIGITE UMA OPÇÃO VÁLIDA*");
+                                System.out.println();
+                                break;
+                        }
+                    }
                     break;
                 case 2:
-                    System.out.print("Insira o nome do curso: ");
-                    adicionar(sc, professores);
+                    loop = true;
+                    while(loop) {
+                        System.out.println("-----ADICIONAR-----");
+                        System.out.println("1 - CURSOS");
+                        System.out.println("2 - PROFESSORES");
+                        System.out.print("DIGITE A OPÇÃO DESEJADA: ");
+                        opcao = sc.nextInt();
+                        System.out.println();
+                        switch(opcao){
+                            case 1:
+                                System.out.println("CURSOS: ");
+                                System.out.print("INSIRA O CURSO: ");
+                                adicionar(sc, cursos);
+                                loop = false;
+                                break;
+                            case 2:
+                                System.out.println("PROFESSORES: ");
+                                System.out.print("INSIRA O PROFESSOR: ");
+                                adicionar(sc, professores);
+                                loop = false;
+                                break;
+                            default:
+                                System.out.println("*DIGITE UMA OPÇÃO VÁLIDA*");
+                                System.out.println();
+                                break;
+                        }
+                    }
+                    break;
+                case 3:
+                    loop = true;
+                    while(loop) {
+                        System.out.println("-----REMOVER-----");
+                        System.out.println("1 - CURSOS");
+                        System.out.println("2 - PROFESSORES");
+                        System.out.print("DIGITE A OPÇÃO DESEJADA: ");
+                        opcao = sc.nextInt();
+                        System.out.println();
+                        switch(opcao){
+                            case 1:
+                                System.out.println("CURSOS: ");
+                                listar(cursos);
+                                System.out.println();
+                                removerItemLista(sc, cursos);
+                                loop = false;
+                                break;
+                            case 2:
+                                System.out.println("PROFESSORES: ");
+                                listar(professores);
+                                System.out.println();
+                                removerItemLista(sc, professores);
+                                loop = false;
+                                break;
+                            default:
+                                System.out.println("*DIGITE UMA OPÇÃO VÁLIDA*");
+                                System.out.println();
+                                break;
+                        }
+                    }
                     break;
                 case 0:
-                    System.out.println("Cursos:");
-                    listar(cursos);
-                    System.out.println();
-                    System.out.println("Professores:");
-                    listar(professores);
-                    System.out.println();
-                    System.out.println("Desligando...");
+                    System.out.println("SAINDO...");
                     bool = false;
                     break;
             }
@@ -77,6 +152,21 @@ public class Main {
         for (int i = 0; i < lista.size(); i++) {
             System.out.println(i + " - " + lista.get(i));
         }
+    }
+
+    public static void removerItemLista(Scanner sc, ArrayList<String> lista){
+        removerItem(lista, listarPedirIndice(sc));
+    }
+
+
+    public static int listarPedirIndice(Scanner sc) {
+        System.out.print("ESCOLHA UM INDICE DA LISTA PARA REMOÇÃO: ");
+        int indice = sc.nextInt();
+        return indice;
+    }
+
+    public static void removerItem(ArrayList<String> lista, int indice) {
+        lista.remove(indice);
     }
 
 
