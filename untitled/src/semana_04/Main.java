@@ -71,6 +71,8 @@ public class Main {
 
         } while(bool);
 
+        sc.close();
+
     }
 
     public static void iniciarCursos(ArrayList<String> lista) {
