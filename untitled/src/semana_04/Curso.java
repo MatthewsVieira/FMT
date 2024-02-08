@@ -16,7 +16,7 @@ public class Curso {
         System.out.println("Avaliando...");
     }
 
-    public void participacao {
+    public void participacao() {
         System.out.println("Participando...");
     }
 
