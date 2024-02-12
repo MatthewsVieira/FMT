@@ -9,20 +9,23 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         ArrayList<Jogador> jogadores = new ArrayList<>();
         Jogo jogo = new Jogo();
-        inicializarJogo(sc, jogadores);
+
+        do {
+            inicializarJogo(sc, jogadores);
+        } while(menuPosJogo(sc, jogadores));
     }
 
-    public static void menu(Scanner sc, ArrayList<Jogador> ranking) {
+    public static boolean menuPosJogo(Scanner sc, ArrayList<Jogador> ranking) {
 
         boolean loop = true;
 
         do {
             System.out.println();
-            System.out.println("********MENU********");
-            System.out.println("1) Adicionar Jogador");
-            System.out.println("2) Imprimir Ranking");
-            System.out.println("3) Pedra, Papel, Tesoura");
-            System.out.println("0) Sair");
+            System.out.println("**********MENU-PÓS-JOGO**********");
+            System.out.println("1) RANKING COMPLETO");
+            System.out.println("2) TOP 10");
+            System.out.println("3) JOGAR NOVAMENTE");
+            System.out.println("0) ENCERRAR JOGO");
             System.out.println("********************");
             System.out.println();
             System.out.print("DIGITE UMA OPÇÃO: ");
@@ -31,22 +34,24 @@ public class Main {
 
             switch(opcao) {
                 case 1:
-                    adicionarJogador(sc, ranking);
+                    Collections.sort(ranking);
+                    imprimirRankingCompleto(ranking);
                     break;
                 case 2:
                     Collections.sort(ranking);
-                    imprimirRanking(ranking);
+                    imprimirRankingTop10(ranking);
                     break;
                 case 3:
-                    inicializarJogo(sc, ranking);
-                    break;
-                case 0:
-                    System.out.println("SAINDO...");
                     loop = false;
                     break;
+                case 0:
+                    System.out.println("ENCERRANDO...");
+                    return false;
             }
 
         } while(loop);
+
+        return true;
     }
 
     public static void adicionarJogador(Scanner sc, ArrayList<Jogador> ranking) {
@@ -138,16 +143,24 @@ public class Main {
     }
 
 
-    public static void imprimirRanking(ArrayList<Jogador> ranking) {
-            if (ranking.size() >= 10) {
-                for (int i = 0; i < 10; i++) {
-                    System.out.println(ranking.get(i).getNome() + " - " + (i + 1) + "º Lugar - Pontuação: " + ranking.get(i).getPontuacao());
-                }
-            } else {
-                for (int i = 0; i < ranking.size(); i++) {
-                    System.out.println(ranking.get(i).getNome() + " - " + (i + 1) + "º Lugar - Pontuação: " + ranking.get(i).getPontuacao());
-                }
+    public static void imprimirRankingTop10(ArrayList<Jogador> ranking) {
+        if (ranking.size() >= 10) {
+            for (int i = 0; i < 10; i++) {
+                System.out.println(ranking.get(i).getNome() + " - " + (i + 1) + "º Lugar - Pontuação: " + ranking.get(i).getPontuacao());
             }
+        } else {
+            for (int i = 0; i < ranking.size(); i++) {
+                System.out.println(ranking.get(i).getNome() + " - " + (i + 1) + "º Lugar - Pontuação: " + ranking.get(i).getPontuacao());
+            }
+       }
+    }
+
+    public static void imprimirRankingCompleto(ArrayList<Jogador> ranking) {
+        for (int i = 0; i < ranking.size(); i++) {
+            System.out.println(ranking.get(i).getNome() + " - " + (i + 1) + "º Lugar - Pontuação: " + ranking.get(i).getPontuacao());
         }
     }
+
+}
+
 

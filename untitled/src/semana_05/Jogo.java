@@ -1,5 +1,6 @@
 package semana_05;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Jogo {
@@ -72,7 +73,7 @@ public class Jogo {
         System.out.println("O JOGO COMEÇOU " + jogador.getNome() + "...");
 
         do {
-            System.out.print("TENTE ACERTAR O NÚMERO ESCOLHIDO ENTRE 0 E " + num);
+            System.out.print("TENTE ACERTAR O NÚMERO ESCOLHIDO ENTRE 0 E " + num + ": ");
             int numero = sc.nextInt();
             sc.nextLine();
 
