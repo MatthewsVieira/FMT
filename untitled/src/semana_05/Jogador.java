@@ -1,6 +1,5 @@
 package semana_05;
 
-import java.util.ArrayList;
 
 public class Jogador implements Comparable<Jogador>{
     private String nome;
@@ -40,13 +39,8 @@ public class Jogador implements Comparable<Jogador>{
             this.pontuacao -= 1;
         }
     }
-
     public void adicionaTentativa() {
         this.numeroTentativas += 1;
-    }
-
-    public void rankearJogadores() {
-
     }
 
     @Override

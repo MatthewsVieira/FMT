@@ -7,9 +7,9 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        ArrayList<Jogador> ranking = new ArrayList<>();
-//        inicializarJogadores(ranking);
-        menu(sc, ranking);
+        ArrayList<Jogador> jogadores = new ArrayList<>();
+        Jogo jogo = new Jogo();
+        menu(sc, jogadores);
     }
 
     public static void menu(Scanner sc, ArrayList<Jogador> ranking) {
@@ -21,6 +21,7 @@ public class Main {
             System.out.println("********MENU********");
             System.out.println("1) Adicionar Jogador");
             System.out.println("2) Imprimir Ranking");
+            System.out.println("3) Pedra, Papel, Tesoura");
             System.out.println("0) Sair");
             System.out.println("********************");
             System.out.println();
@@ -35,6 +36,9 @@ public class Main {
                 case 2:
                     Collections.sort(ranking);
                     imprimirRanking(ranking);
+                    break;
+                case 3:
+                    inicializarJogo(sc, ranking);
                     break;
                 case 0:
                     System.out.println("SAINDO...");
@@ -68,36 +72,59 @@ public class Main {
                 }
             }
 
-            if(nomeIgual != nome) {
+            if (nomeIgual != nome) {
                 ranking.add(new Jogador(nome, idade, 0,0));
                 loop = false;
             }
 
-        } while(loop);
+        } while (loop);
+
+        Jogo.jogar(sc, ranking.get(ranking.size() - 1));
     }
 
-    public static void inicializarJogadores(ArrayList<Jogador> ranking){
-        ranking.add(new Jogador ("Abner", 18, 200, 5));
-        ranking.add(new Jogador ("Vanderlei", 24, 500, 2));
-        ranking.add(new Jogador ("Lucas", 15, 180, 3));
-        ranking.add(new Jogador ("Amanda", 27, 554, 7));
-        ranking.add(new Jogador ("Tyler", 19, 50, 1));
-        ranking.add(new Jogador ("Mot", 19, 60, 1));
-        ranking.add(new Jogador ("Fat", 19, 80, 1));
-        ranking.add(new Jogador ("Thin", 19, 70, 1));
-        ranking.add(new Jogador ("Young", 19, 10, 1));
-        ranking.add(new Jogador ("Old", 19, 93, 1));
-        ranking.add(new Jogador ("New", 19, 88, 1));
+    public static void inicializarJogo(Scanner sc, ArrayList<Jogador> ranking){
+
+        System.out.println("BEM VINDO");
+        System.out.println();
+        if (ranking.isEmpty()) {
+            System.out.println("PERCEBEMOS QUE NÃO EXISTE NENHUM USUÁRIO NESSE SISTEMA...");
+            System.out.println("POR FAVOR, CRIE UM...");
+            adicionarJogador(sc, ranking);
+        } else {
+            System.out.println("VOCÊ DESEJA:");
+            System.out.println("------------------------------------");
+            System.out.println("1 - JOGAR COM UM NOVO USUÁRIO");
+            System.out.println("2 - JOGAR COM UM USUÁRIO EXISTENTE");
+            System.out.println("------------------------------------");
+            System.out.print("DIGITE UMA OPÇÃO: ");
+            int opcao = sc.nextInt();
+            sc.nextLine();
+            System.out.println("------------------------------------");
+
+            if (opcao == 1) {
+                adicionarJogador(sc, ranking);
+            } else if (opcao == 2) {
+                System.out.println("LISTA DE JOGADORES CADASTRADOS:");
+                for (int i = 0; i < ranking.size(); i++) {
+                    System.out.println(i + " - " + ranking.get(i).getNome());
+                }
+                System.out.println();
+                System.out.print("DIGITE O NÚMERO RESPECTIVO AO SEU NOME: ");
+                int id = sc.nextInt();
+                sc.nextLine();
+                Jogo.jogar(sc, ranking.get(id));
+            }
+        }
     }
 
     public static void imprimirRanking(ArrayList<Jogador> ranking) {
-            if(ranking.size() >= 10) {
+            if (ranking.size() >= 10) {
                 for (int i = 0; i < 10; i++) {
-                    System.out.println(ranking.get(i).getNome() + " - " + (i + 1) + "º Lugar");
+                    System.out.println(ranking.get(i).getNome() + " - " + (i + 1) + "º Lugar - Pontuação: " + ranking.get(i).getPontuacao());
                 }
             } else {
                 for (int i = 0; i < ranking.size(); i++) {
-                    System.out.println(ranking.get(i).getNome() + " - " + (i + 1) + "º Lugar");
+                    System.out.println(ranking.get(i).getNome() + " - " + (i + 1) + "º Lugar - Pontuação: " + ranking.get(i).getPontuacao());
                 }
             }
         }
