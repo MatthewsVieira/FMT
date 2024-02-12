@@ -9,7 +9,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         ArrayList<Jogador> jogadores = new ArrayList<>();
         Jogo jogo = new Jogo();
-        menu(sc, jogadores);
+        inicializarJogo(sc, jogadores);
     }
 
     public static void menu(Scanner sc, ArrayList<Jogador> ranking) {
@@ -79,7 +79,7 @@ public class Main {
 
         } while (loop);
 
-        Jogo.jogar(sc, ranking.get(ranking.size() - 1));
+        escolherJogo(sc, ranking.get(ranking.size() - 1));
     }
 
     public static void inicializarJogo(Scanner sc, ArrayList<Jogador> ranking){
@@ -112,10 +112,31 @@ public class Main {
                 System.out.print("DIGITE O NÚMERO RESPECTIVO AO SEU NOME: ");
                 int id = sc.nextInt();
                 sc.nextLine();
-                Jogo.jogar(sc, ranking.get(id));
+                escolherJogo(sc, ranking.get(id));
             }
         }
     }
+
+    public static void escolherJogo(Scanner sc, Jogador jogador) {
+        System.out.println();
+        System.out.println("ESCOLHA UM DOS JOGOS:");
+        System.out.println("1 - PEDRA, PAPEL, TESOURA");
+        System.out.println("2 - ACHE O NÚMERO");
+        System.out.print("OPÇÃO: ");
+        int opcao = sc.nextInt();
+        sc.nextLine();
+        switch(opcao) {
+            case 1:
+                Jogo.jogar(sc, jogador);
+                break;
+            case 2:
+                System.out.print("ESCOLHA A QUANTIDADE DE NÚMEROS QUE VAI TER NO JOGO: ");
+                int quantidadeN = sc.nextInt();
+                sc.nextLine();
+                Jogo.jogar(sc, jogador, quantidadeN);
+        }
+    }
+
 
     public static void imprimirRanking(ArrayList<Jogador> ranking) {
             if (ranking.size() >= 10) {

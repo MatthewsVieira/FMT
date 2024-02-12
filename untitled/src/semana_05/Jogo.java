@@ -62,6 +62,40 @@ public class Jogo {
 
     }
 
+    public static void jogar(Scanner sc, Jogador jogador, int num) {
+
+        Jogo acheNumero = new Jogo();
+        int random = (int) (Math.random() * num + 1);
+        boolean loop = true;
+
+        System.out.println();
+        System.out.println("O JOGO COMEÇOU " + jogador.getNome() + "...");
+
+        do {
+            System.out.print("TENTE ACERTAR O NÚMERO ESCOLHIDO ENTRE 0 E " + num);
+            int numero = sc.nextInt();
+            sc.nextLine();
+
+            if (numero == random) {
+                System.out.println("YOU WIN!");
+                jogador.adicionaPontos();
+            } else {
+                System.out.println("YOU LOSE!");
+                jogador.perdePontos();
+            }
+
+            jogador.adicionaTentativa();
+            acheNumero.adicionarNumeroJogadas();
+
+            System.out.println();
+            System.out.print("APERTE (Q) PARA SAIR OU QUALQUER OUTRA TECLA PARA CONTINUAR: ");
+            char opcao = sc.next().charAt(0);
+            loop = (Character.toLowerCase(opcao) == 'q') ? false : true ;
+        } while(loop);
+
+    }
+
+
     public void adicionarNumeroJogadas() {
         numeroJogadas += 1;
     }
