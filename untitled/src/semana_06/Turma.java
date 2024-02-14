@@ -2,9 +2,10 @@ package semana_06;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.GregorianCalendar;
 
-public class Turma {
+public class Turma{
 
     private ArrayList<Aluno> listaAlunos;
     private int ano;
@@ -44,5 +45,11 @@ public class Turma {
     public void removerAluno(int indice) {
         listaAlunos.remove(indice);
     }
-    
+
+    public void listarAlunos(ArrayList<Aluno> listaAlunos) {
+        for (Aluno aluno : listaAlunos) {
+            System.out.println("Aluno: " + aluno.getNome() + " - Idade: " + aluno.getIdade());
+        }
+    }
+
 }
