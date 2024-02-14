@@ -35,4 +35,5 @@ public class Professor {
     public void setTempoTrabalho(int tempoTrabalho) {
         this.tempoTrabalho = tempoTrabalho;
     }
+
 }
