@@ -36,4 +36,13 @@ public class Turma {
     public void setCurso(Curso curso) {
         this.curso = curso;
     }
+
+    public void adicionarAluno(Aluno aluno) {
+        listaAlunos.add(aluno);
+    }
+
+    public void removerAluno(int indice) {
+        listaAlunos.remove(indice);
+    }
+    
 }
