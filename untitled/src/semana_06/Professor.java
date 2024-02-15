@@ -4,7 +4,6 @@ public class Professor extends Funcionario {
 
     private String nome;
     private int idade;
-    private int tempoTrabalho;
 
     public Professor(String nome, int idade, int tempoTrabalho) {
         this.nome = nome;
@@ -28,12 +27,5 @@ public class Professor extends Funcionario {
         this.idade = idade;
     }
 
-    public int getTempoTrabalho() {
-        return tempoTrabalho;
-    }
-
-    public void setTempoTrabalho(int tempoTrabalho) {
-        this.tempoTrabalho = tempoTrabalho;
-    }
 
 }

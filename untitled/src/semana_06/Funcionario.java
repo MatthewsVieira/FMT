@@ -4,6 +4,7 @@ public class Funcionario {
 
     private String nome;
     private double salario;
+    private int tempoCargo;
 
     public String getNome() {
         return nome;
@@ -19,5 +20,13 @@ public class Funcionario {
 
     public void setSalario(double salario) {
         this.salario = salario;
+    }
+
+    public int getTempoCargo() {
+        return tempoCargo;
+    }
+
+    public void setTempoCargo(int tempoCargo) {
+        this.tempoCargo = tempoCargo;
     }
 }
