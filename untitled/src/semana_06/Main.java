@@ -12,7 +12,7 @@ public class Main {
 
     public static void teste() {
 
-        Professor professor1 = new Professor("Charles", 30, 0);
+        Professor professor1 = new Professor("Charles", 30);
         Aluno aluno1 = new Aluno("Zabner", 18);
         Aluno aluno2 = new Aluno("Abner", 16);
         Aluno aluno3 = new Aluno("Mabner", 15);

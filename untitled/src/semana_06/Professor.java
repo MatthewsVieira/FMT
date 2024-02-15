@@ -5,10 +5,9 @@ public class Professor extends Funcionario {
     private String nome;
     private int idade;
 
-    public Professor(String nome, int idade, int tempoTrabalho) {
+    public Professor(String nome, int idade) {
         this.nome = nome;
         this.idade = idade;
-        this.tempoTrabalho = tempoTrabalho;
     }
 
     public String getNome() {

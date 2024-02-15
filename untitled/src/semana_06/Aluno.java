@@ -4,6 +4,7 @@ public class Aluno {
 
     private String nome;
     private int idade;
+    private StatusMatricula status;
 
     public Aluno(String nome, int idade) {
         this.nome = nome;
