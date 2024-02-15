@@ -1,6 +1,6 @@
 package semana_06;
 
-public class Professor {
+public class Professor extends Funcionario {
 
     private String nome;
     private int idade;
