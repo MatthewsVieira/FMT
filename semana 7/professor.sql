@@ -5,4 +5,4 @@ CREATE TABLE professor (
 );
 
 ALTER TABLE professor 
-ADD id_curso BIGINT NOT NULL REFERENCES curso(id);
+ADD id_curso BIGINT REFERENCES curso(id);
