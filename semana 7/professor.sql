@@ -3,3 +3,6 @@ CREATE TABLE professor (
 	nome VARCHAR(100) NOT NULL,
 	especialidade VARCHAR(100) NOT NULL
 );
+
+ALTER TABLE professor 
+ADD id_curso BIGINT NOT NULL REFERENCES curso(id);
